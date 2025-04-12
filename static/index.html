@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JP Tube</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			color: #333;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		h1 {
+			color: #ff00ff;
+		}
+
+		#video-list {
+			margin-top: 20px;
+		}
+
+		button {
+			margin: 5px;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>JP Tube</h1>
+	<div id="video-list"></div>
+	<div id="now-playing"></div>
+
+	<script>
+		async function fetchVideos() {
+			const response = await fetch('/videos');
+			const videos = await response.json();
+
+			const videoList = document.getElementById('video-list');
+			videoList.innerHTML = ''; // Clear previous list
+			videos.forEach(video => {
+				const button = document.createElement('button');
+				button.textContent = video;
+				button.onclick = () => playVideo(video);
+				videoList.appendChild(button);
+			});
+		}
+
+		async function playVideo(video) {
+			await fetch('/play', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ filename: video }),
+			});
+		}
+
+		function listenForSSE() {
+			const eventSource = new EventSource('/sse');
+			eventSource.onmessage = function (event) {
+				const nowPlaying = document.getElementById('now-playing');
+				nowPlaying.textContent = `Now playing: ${event.data}`;
+			};
+		}
+
+		fetchVideos();
+		listenForSSE();
+	</script>
+</body>
+
+</html>
