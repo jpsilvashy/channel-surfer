@@ -1,4 +1,4 @@
-# Video Server - TV Guide
+# Channel Surfer
 
 A retro 90's style video streaming server with a nostalgic TV Guide interface.
 
@@ -6,7 +6,7 @@ A retro 90's style video streaming server with a nostalgic TV Guide interface.
 
 ## Description
 
-This project combines a Node.js Express server for video delivery with a React-based frontend using Vite. It also includes Rust components for enhanced functionality. The interface is inspired by the classic 90's cable TV guide channels that many of us grew up with - complete with scrolling listings, retro fonts, and that distinctive blue/yellow color scheme.
+Channel Surfer combines a Node.js Express server for video delivery with a React-based frontend using Vite. It also includes Rust components for enhanced functionality. The interface is inspired by the classic 90's cable TV guide channels that many of us grew up with - complete with scrolling listings, retro fonts, and that distinctive blue/yellow color scheme.
 
 ## Features
 
@@ -35,8 +35,8 @@ The visual design takes heavy inspiration from cable TV guide channels of the 19
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/video-server.git
-   cd video-server
+   git clone https://github.com/yourusername/channel-surfer.git
+   cd channel-surfer
    ```
 
 2. Install dependencies:

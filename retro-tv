@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# retro-tv - A simple launcher for Internet Archive Video Manager
+# Created for the retro TV Guide project
+
+# Set directory to the project root, no matter where this script is called from
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$PROJECT_DIR"
+
+# Make sure videos directory exists
+mkdir -p ./videos
+
+echo "🎬 Starting Retro TV Video Manager 🎬"
+echo "======================================"
+echo "💫 NAVIGATION: Use ↑/↓ arrow keys and Enter to select options"
+
+# Run the Internet Archive video downloader menu
+cargo run --bin ia_menu
+
+exit 0
