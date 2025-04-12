@@ -1,6 +1,8 @@
 # Video Server - TV Guide
 
-A retro 90's style video streaming server with a nostalgic TV Guide interface for home media viewing.
+A retro 90's style video streaming server with a nostalgic TV Guide interface.
+
+![TV Guide Screenshot](screenshot.png)
 
 ## Description
 
